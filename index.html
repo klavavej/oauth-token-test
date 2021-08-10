@@ -10,12 +10,12 @@
 <body>
   <h1>GitHub Authentication Example:</h1>
   <p><a href="#" id="login">Authenticate</a></p>
-  <p>Token: <span id="output">Not authenticated yet</span></p>
+  <p>Token: <span id="output-token">Not authenticated yet</span></p>
   <p>User emails: <span id="output-email">Not authenticated yet</span></p>
 
   <script>
     const anchorTag = document.getElementById("login");
-    const outputText = document.getElementById("output");
+    const outputToken = document.getElementById("output-token");
     const outputEmail = document.getElementById("output-email");
 
     anchorTag.addEventListener("click", (event) => {
@@ -24,6 +24,9 @@
       const authenticator = new netlify.default({});
 
       authenticator.authenticate(
+        // Set the OAuth provider and token scope
+        // Provider can be "github", "gitlab", or "bitbucket"
+        // The scopes available depend on your OAuth provider
         { provider: "github", scope: "user" },
         async function (error, data) {
           if (error) {
