@@ -30,10 +30,10 @@
         { provider: "github", scope: "user" },
         async function (error, data) {
           if (error) {
-            outputText.innerText =
+            outputToken.innerText =
               "Error Authenticating with GitHub: " + error;
           } else {
-            outputText.innerText =
+            outputToken.innerText =
               "Authenticated with GitHub. Access Token: " + data.token;
             outputEmail.innerText = await loadGitHubUserEmails(data.token);
           }
